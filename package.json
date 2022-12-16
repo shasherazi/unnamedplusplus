@@ -2,9 +2,10 @@
   "name": "unnamedplusplus",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./src/unnamedplusplus.js",
   "type": "module",
   "scripts": {
+    "start": "node ./src/unnamedplusplus.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
