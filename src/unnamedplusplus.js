@@ -20,13 +20,6 @@ client.once(Events.ClientReady, c => {
     console.log(`Ready! Logged in as ${c.user.tag}`);
 });
 
-
-client.on(Events.MessageCreate, message => {
-    if (message.content === 'ping') {
-        message.reply('pong');
-    }
-});
-
 // send a r/unixporn image to a channel every 6 hours
 setInterval(async () => {
     const postLink = await getImgUrl();
