@@ -18,9 +18,6 @@ const client = new Client({
 // We use 'c' for the event parameter to keep it separate from the already defined 'client'
 client.once(Events.ClientReady, c => {
     console.log(`Ready! Logged in as ${c.user.tag}`);
-    // send message to a channel
-    // const channel = client.channels.cache.get('1053381439195979786');
-    // channel.send('Hello world!');
 });
 
 
