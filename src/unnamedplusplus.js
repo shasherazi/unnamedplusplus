@@ -29,13 +29,12 @@ setInterval(async () => {
 }, 10800 * 1000);
 
 
-// send a random meme to a channel every 6 hours
+// send a random meme to a channel every 10 minutes
 setInterval(async () => {
-    const { url, subreddit } = await getRandomMeme();
-    console.log(subreddit);
-    const channel = client.channels.cache.get('1053381439195979786');
+    const { url } = await getRandomMeme();
+    const channel = client.channels.cache.get('1055957246158311466');
     channel.send(url);
-}, 3 * 1000);
+}, 10 * 60 * 1000);
 
 
 // Log in to Discord with your client's token
