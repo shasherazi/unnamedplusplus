@@ -25,7 +25,7 @@ setInterval(async () => {
     const postLink = await getImgUrl();
     const channel = client.channels.cache.get('1053394333807673436');
     channel.send(postLink);
-}, 21600000);
+}, 10800 * 1000);
 
 // Log in to Discord with your client's token
 client.login(token);
