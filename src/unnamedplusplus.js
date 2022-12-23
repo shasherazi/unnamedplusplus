@@ -1,6 +1,7 @@
 // Require the necessary discord.js classes
 import { Client, Events, GatewayIntentBits } from 'discord.js';
 import { getImgUrl } from './modules/redditSender/unixporn.js';
+import { getRandomMeme } from './modules/redditSender/meme.js';
 import dotenv from 'dotenv';
 dotenv.config();
 const token = process.env.TOKEN;
@@ -26,6 +27,16 @@ setInterval(async () => {
     const channel = client.channels.cache.get('1053394333807673436');
     channel.send(postLink);
 }, 10800 * 1000);
+
+
+// send a random meme to a channel every 6 hours
+setInterval(async () => {
+    const { url, subreddit } = await getRandomMeme();
+    console.log(subreddit);
+    const channel = client.channels.cache.get('1053381439195979786');
+    channel.send(url);
+}, 3 * 1000);
+
 
 // Log in to Discord with your client's token
 client.login(token);
