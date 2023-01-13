@@ -20,12 +20,12 @@ client.once(Events.ClientReady, c => {
     console.log(`Ready! Logged in as ${c.user.tag}`);
 });
 
-// send a r/unixporn image to a channel every 6 hours
+// send a r/unixporn image to a channel every 1 hours
 setInterval(async () => {
     const postLink = await getImgUrl();
     const channel = client.channels.cache.get('1053394333807673436');
     channel.send(postLink);
-}, 10800 * 1000);
+}, 3600 * 1000);
 
 // Log in to Discord with your client's token
 client.login(token);
