@@ -15,27 +15,35 @@ const client = new Client({
     ],
 });
 
-// When the client is ready, run this code (only once)
-// We use 'c' for the event parameter to keep it separate from the already defined 'client'
-client.once(Events.ClientReady, c => {
-    console.log(`Ready! Logged in as ${c.user.tag}`);
-});
-
-// send a r/unixporn image to a channel every 1 hour
-setInterval(async () => {
-    const postLink = await getImgUrl();
-    const channel = client.channels.cache.get('1053394333807673436');
-    channel.send(postLink);
-    console.log(`Sent a unixporn image: ${postLink}`);
-}, 60 * 60 * 1000); // 1 hour in milliseconds
-
-// sent a meme to memes channel every 15 minutes
-setInterval(async () => {
+// send a meme immediately at startup
+async function sendMeme() {
     const data = await getMemeUrl();
     const channel = client.channels.cache.get('1055957246158311466');
     channel.send(`From r/${data.subreddit}: ${data.title}`);
     channel.send(data.url);
-}, 15 * 60 * 1000); // 15 minutes in milliseconds
+}
+
+// send a unixporn image immediately at startup
+async function sendUnixporn() {
+    const data = await getImgUrl();
+    const channel = client.channels.cache.get('1053394333807673436');
+    channel.send(`Title: ${data.title}`);
+    channel.send(`<${data.postLink}>`);
+    channel.send(data.url);
+    console.log(`Sent a unixporn image: ${data.postLink}`);
+}
+
+client.once(Events.ClientReady, c => {
+    console.log(`Ready! Logged in as ${c.user.tag}`);
+
+    // call once immediately
+    sendMeme();
+    sendUnixporn();
+
+    // then schedule repeats
+    setInterval(sendMeme, 15 * 60 * 1000);
+    setInterval(sendUnixporn, 60 * 60 * 1000);
+});
 
 // Log in to Discord with your client's token
 client.login(token);
