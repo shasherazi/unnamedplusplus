@@ -11,10 +11,10 @@ const token = process.env.TOKEN as string;
 
 client.once("clientReady", () => {
   console.log("Ready!");
-  sendHello();
+  setInterval(sendGif, 15 * 60 * 1000);
 });
 
-async function sendHello() {
+async function sendGif() {
   try {
     const channel = await client.channels.fetch(channelId);
 
@@ -38,5 +38,4 @@ async function sendHello() {
   }
 }
 
-console.log("Logging in...");
 client.login(token);
