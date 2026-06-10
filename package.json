@@ -1,0 +1,24 @@
+{
+  "name": "unnamedplusplus",
+  "version": "1.0.0",
+  "description": "discord bot for shasherazi",
+  "homepage": "https://github.com/shasherazi/unnamedplusplus#readme",
+  "bugs": {
+    "url": "https://github.com/shasherazi/unnamedplusplus/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shasherazi/unnamedplusplus.git"
+  },
+  "license": "WTFPL",
+  "author": "shasherazi",
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "node src/index.ts"
+  },
+  "dependencies": {
+    "discord.js": "^14.26.4",
+    "dotenv": "^17.4.2"
+  }
+}
